@@ -1,7 +1,6 @@
 /**
  * Prefix a file in /public with the site's base path.
- * Needed on GitHub Pages, where the site lives under /personal-website/.
- *   asset("/images/s2-a.jpg") → "/personal-website/images/s2-a.jpg"
+ * Empty for https://lugilugi.github.io/, but keeps links working if the site moves to a sub-path.
  */
 export function asset(path: string): string {
   if (!path.startsWith("/")) return path; // external URLs and relative paths pass through

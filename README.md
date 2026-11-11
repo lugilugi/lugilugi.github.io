@@ -1,4 +1,4 @@
-# personal-website
+# lugilugi.github.io
 
 Luigi Cuansing's portfolio — the Canva deck "Cuansing Portfolio" rebuilt as a Next.js site.
 
@@ -11,13 +11,13 @@ npm run dev     # http://localhost:3000
 
 ## Deploy (GitHub Pages)
 
-Live at **https://lugilugi.github.io/personal-website/**.
+Live at **https://lugilugi.github.io/**.
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds a static export (`out/`)
 and publishes it to GitHub Pages. Watch progress under the repo's **Actions** tab.
 
 In files you add to `public/`, reference them through `asset()` from `lib/asset.ts`
-(e.g. `asset("/kicad/foc.kicad_pcb")`) so the `/personal-website` prefix is added on GitHub Pages.
+(e.g. `asset("/kicad/foc.kicad_pcb")`) so paths stay correct if the site is ever served from a sub-path (e.g. a project-page repo).
 `<SlideImage>` and `<KiCadViewer>` already do this for you.
 
 ## Layout
