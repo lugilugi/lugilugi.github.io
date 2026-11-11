@@ -1,0 +1,94 @@
+/* Each section reproduces one 1920×1080 Canva slide.
+   Elements are placed with their exact Canva coordinates (--l, --t, --w, --h in slide px)
+   and everything scales with the slide width via container query units. */
+
+:root { --ink: #24282c; --blue: #2a5aad; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #ffffff; color: var(--ink); }
+body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: .15em; }
+p { margin: 0; }
+b { font-weight: 700; display: block; }
+
+main { max-width: 1920px; margin: 0 auto; }
+
+.slide {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1080;
+  container-type: inline-size;
+  overflow: hidden;
+  background: #fff;
+}
+.slide + .slide { border-top: 1px solid #eef0f3; }
+
+/* 1 slide px = 100cqw / 1920 */
+.el {
+  --u: calc(100cqw / 1920);
+  position: absolute;
+  left: calc(var(--l) * var(--u));
+  top: calc(var(--t) * var(--u));
+  width: calc(var(--w) * var(--u));
+  min-height: calc(var(--h) * var(--u));
+  margin: 0;
+}
+img.el { height: calc(var(--h) * var(--u)); object-fit: cover; display: block; }
+
+/* ---------- Type (sizes straight from Canva) ---------- */
+/* Google Fonts' Inter sets ~2% wider than Canva's, so tracking is tightened to keep the slides' line breaks */
+.name, .h { font-weight: 600; letter-spacing: -0.028em; line-height: .96; }
+.t37, .t33, .t28, .t24, .t23, .t21, .t20 { letter-spacing: -0.008em; }
+.name { font-size: calc(187.132 * 100cqw / 1920); }
+.h    { font-size: calc(106.667 * 100cqw / 1920); }
+.h96  { font-size: calc(96 * 100cqw / 1920); }
+.t37 { font-size: calc(37.3332 * 100cqw / 1920); line-height: 1.4; }
+.t33 { font-size: calc(33.3333 * 100cqw / 1920); line-height: 1.4; }
+.t28 { font-size: calc(28 * 100cqw / 1920); line-height: 1.4; }
+.t24 { font-size: calc(24 * 100cqw / 1920); line-height: 1.4; }
+.t23 { font-size: calc(22.978 * 100cqw / 1920); line-height: 1.4; }
+.t21 { font-size: calc(21.348 * 100cqw / 1920); line-height: 1.4; }
+.t20 { font-size: calc(20.2155 * 100cqw / 1920); line-height: 1.4; }
+.t24 p + p { margin-top: 1.4em; }
+
+/* ---------- Lines ---------- */
+.rule  { background: var(--blue); min-height: 0; height: calc(3 * 100cqw / 1920); }
+.vrule { background: var(--blue); width: calc(3 * 100cqw / 1920); }
+
+/* ---------- Social links (slide 1) ---------- */
+.social { display: flex; align-items: center; gap: calc(15 * 100cqw / 1920); }
+.social:hover { text-decoration: none; }
+.social:hover span.t37 { text-decoration: underline; text-underline-offset: .15em; }
+.social .ico { width: calc(80.95 * 100cqw / 1920); height: calc(80.95 * 100cqw / 1920); flex: none; }
+.social .li {
+  flex: none;
+  width: calc(86.52 * 100cqw / 1920);
+  height: calc(80.95 * 100cqw / 1920);
+  background: var(--blue);
+  border-radius: calc(20 * 100cqw / 1920);
+  color: #fff;
+  font-size: calc(55.78 * 100cqw / 1920);
+  line-height: 1;
+  display: grid; place-items: center;
+  padding-bottom: calc(6 * 100cqw / 1920);
+}
+
+/* ---------- Phones: same content, stacked so it stays readable ---------- */
+@media (max-width: 760px) {
+  .slide { aspect-ratio: auto; overflow: visible; padding: 40px 22px 44px; display: flex; flex-direction: column; gap: 16px; }
+  .el { position: static; width: auto; min-height: 0; --u: 1px; }
+  img.el { width: 100%; height: auto; aspect-ratio: calc(var(--w) / var(--h)); }
+  .name { font-size: 64px; }
+  .h { font-size: 40px; }
+  .t37 { font-size: 19px; }
+  .t33, .t28 { font-size: 16px; }
+  .t24, .t23, .t21, .t20 { font-size: 15px; }
+  .rule { height: 3px; width: 100%; }
+  .vrule { display: none; }
+  .s1 { padding-top: 32px; }
+  .s1 img.el:first-child { order: 10; }
+  .social { gap: 12px; }
+  .social .ico { width: 40px; height: 40px; }
+  .social .li { width: 43px; height: 40px; border-radius: 10px; font-size: 28px; padding-bottom: 3px; }
+}
