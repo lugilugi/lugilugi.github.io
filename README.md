@@ -9,7 +9,16 @@ npm install
 npm run dev     # http://localhost:3000
 ```
 
-Pushing to `main` deploys to Vercel automatically.
+## Deploy (GitHub Pages)
+
+Live at **https://lugilugi.github.io/personal-website/**.
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds a static export (`out/`)
+and publishes it to GitHub Pages. Watch progress under the repo's **Actions** tab.
+
+In files you add to `public/`, reference them through `asset()` from `lib/asset.ts`
+(e.g. `asset("/kicad/foc.kicad_pcb")`) so the `/personal-website` prefix is added on GitHub Pages.
+`<SlideImage>` and `<KiCadViewer>` already do this for you.
 
 ## Layout
 
@@ -43,4 +52,4 @@ New pages go in `app/<name>/page.tsx` — e.g. `app/foc/page.tsx` becomes `/foc`
 
 KiCanvas is still in alpha and loads from kicanvas.org by default. To pin a version, download
 `https://kicanvas.org/kicanvas/kicanvas.js` to `public/kicanvas.js` and set the environment variable
-`NEXT_PUBLIC_KICANVAS_SRC=/kicanvas.js` in Vercel.
+`NEXT_PUBLIC_KICANVAS_SRC=/kicanvas.js` in the build step of `.github/workflows/deploy.yml`.

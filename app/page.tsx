@@ -1,4 +1,5 @@
 import { Slide, SlideImage, pos } from "@/components/Slide";
+import { asset } from "@/lib/asset";
 
 /*
  * Each <Slide> reproduces one 1920×1080 slide from the Canva deck "Cuansing Portfolio".
@@ -23,7 +24,7 @@ export default function Home() {
         <a className="el social" style={pos([102.1, 862.48, 250, 80.95])} href="https://github.com/lugilugi"
           target="_blank" rel="noopener" aria-label="GitHub: lugilugi">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="ico" src="/images/s1-github.png" alt="" />
+          <img className="ico" src={asset("/images/s1-github.png")} alt="" />
           <span className="t37">lugilugi</span>
         </a>
         <a className="el social" style={pos([447.16, 862.48, 380, 80.95])} href="https://www.linkedin.com/in/luigicuansing"

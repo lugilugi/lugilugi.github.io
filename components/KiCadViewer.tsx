@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { asset } from "@/lib/asset";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
 /**
@@ -31,9 +32,9 @@ type Props = {
 export default function KiCadViewer({ src, files, controls = "basic", zoom, className = "kicad", style }: Props) {
   return (
     <>
-      <Script src={KICANVAS_SRC} type="module" strategy="afterInteractive" />
-      <kicanvas-embed src={files ? undefined : src} controls={controls} zoom={zoom} className={className} style={style}>
-        {files?.map((f) => <kicanvas-source key={f} src={f} />)}
+      <Script src={asset(KICANVAS_SRC)} type="module" strategy="afterInteractive" />
+      <kicanvas-embed src={files || !src ? undefined : asset(src)} controls={controls} zoom={zoom} className={className} style={style}>
+        {files?.map((f) => <kicanvas-source key={f} src={asset(f)} />)}
       </kicanvas-embed>
     </>
   );
