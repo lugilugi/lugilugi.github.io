@@ -22,7 +22,7 @@ export function Slide({
 }
 
 /** An image filling an exact slide box (cropped from the Canva export). */
-export function SlideImage({ box, src, alt }: { box: Box; src: string; alt: string }) {
+export function SlideImage({ box, src, alt, eager = false }: { box: Box; src: string; alt: string; eager?: boolean }) {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img className="el img" style={pos(box)} src={asset(src)} alt={alt} loading="lazy" />;
+  return <img className="el img" style={pos(box)} src={asset(src)} alt={alt} loading={eager ? "eager" : "lazy"} />;
 }

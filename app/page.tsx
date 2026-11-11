@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       {/* ============ Slide 1 — Title ============ */}
       <Slide className="s1" aria-label="About">
-        <SlideImage box={[836.25, 43.28, 1083.75, 993.44]} src="/images/s1-board.jpg" alt="EMH-IMUC-REV-01 board render" />
+        <SlideImage box={[836.25, 43.28, 1083.75, 993.44]} src="/images/s1-board.jpg" alt="EMH-IMUC-REV-01 board render" eager />
         <h1 className="el name" style={pos([76.59, 216.5, 891.11, 402.92])}>Luigi Cuansing</h1>
         <p className="el t37" style={pos([100.1, 625, 935.74, 44.54])}>BS Computer Engineering at De La Salle University</p>
         <div className="el rule" style={pos([100.1, 694.54, 817.59, 3])} />
